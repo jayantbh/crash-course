@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'do-gaddi',
+    modulePrefix: 'crash-course',
     environment,
     rootURL: '/',
     locationType: 'auto',

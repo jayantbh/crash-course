@@ -1,0 +1,25 @@
+<div class="game-component-wrapper {{if (or isUnstarted isGameOver) "game-over"}}">
+  <div class="text-content">
+    {{#if isGameOver}}
+      {{#if (eq game.score 0)}}
+        Oh well...
+      {{else if (lt game.score 100)}}
+        At least you know how to play the game.
+      {{else if (lt game.score 250)}}
+        You're pretty okay at this.
+      {{else if (lt game.score 500)}}
+        Have you been practicing?
+      {{else if (lt game.score 1000)}}
+        You're pretty good at this!
+      {{else if (gt-eq game.score 1000)}}
+        Are you sure you have nothing better to do?
+      {{/if}}
+      <br><span class="score">Your score was {{game.score}}!</span>
+      <button class="game-start" autofocus="autofocus" {{action createGame}}>Play again</button>
+    {{else}}
+      Welcome!<br><span class="instructions">Press click button or press space to play!</span>
+      <button class="game-start" autofocus="autofocus" {{action createGame}}>Play</button>
+    {{/if}}
+  </div>
+  <div id="game-component"></div>
+</div>
