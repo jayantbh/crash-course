@@ -60,10 +60,11 @@ br {
   cursor: pointer;
 }
 
-@keyframes slide-out-of-screen {
-  0% { transform: translateY(0vh); }
-  80% { transform: translateY(0vh); }
-  100% { transform: translateY(100vh); }
+@keyframes slide-fade-out {
+  0%    { transform: translateY(0vh); opacity: 1; }
+  60%   { transform: translateY(0vh); opacity: 1;  }
+  99%   { transform: translateY(110vh); opacity: 0;  }
+  100%  { transform: translateY(110vh); opacity: 0; }
 }
 
 @keyframes spin {
@@ -161,6 +162,6 @@ br {
 }
 
 .game-over #game-component {
-  animation: slide-out-of-screen 2.5s ease-out;
+  animation: slide-fade-out 4s ease-out;
   animation-fill-mode: forwards;
 }
