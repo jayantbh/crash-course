@@ -98,30 +98,6 @@ export default Service.extend({
     service.car = this.physics.add.sprite(width/2, carPosition, 'car').setScale(0.75);
     service.car.setCollideWorldBounds(true);
     this.physics.add.overlap(service.car, bricks, (...args) => { service.hitCar.call(this, service, ...args) }, null, this);
-
-    // let platforms = this.physics.add.staticGroup();
-    // platforms.create(width/2, height, 'ground').setScale(2).refreshBody();
-    // platforms.create(600, 400, 'ground');
-    // platforms.create(50, 250, 'ground');
-    // platforms.create(750, 220, 'ground');
-    // service.player = this.physics.add.sprite(width/2, height/2, 'dude');
-    // service.player.setBounce(0.2);
-    // service.player.setCollideWorldBounds(true);
-    // service.player.body.setGravityY(300);
-    // this.physics.add.collider(service.player, platforms, () => {}); // callback is optional
-    // service.stars = this.physics.add.group({
-    //   key: 'star',
-    //   repeat: 11,
-    //   setXY: { x: 12, y: 0, stepX: 70 }
-    // });
-    // service.stars.children.iterate(function (child) {
-    //   child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
-    // });
-    // this.physics.add.collider(service.stars, platforms, () => {});
-    // this.physics.add.overlap(service.player, bricks, (...args) => service.collectStar.call(this, service, ...args), null, this);
-    // service.bombs = this.physics.add.group();
-    // this.physics.add.collider(service.bombs, platforms);
-    // this.physics.add.collider(bricks, service.player, (...args) => service.hitBomb.call(this, service, ...args), null, this);
   },
 
   updateHook (service) {
