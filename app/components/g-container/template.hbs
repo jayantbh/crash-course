@@ -1,3 +1,10 @@
+<div class="header">
+  <img src="assets/brick.png" alt="Brick icon">
+  <div class="brand-text">
+    <span class="title">Crash Course</span>
+    <div class="subtitle">An experimental Phaser.js project</div>
+  </div>
+</div>
 <div class="game-component-wrapper {{if (or isUnstarted isGameOver) "game-over"}}">
   <div class="text-content">
     {{#if isGameOver}}
@@ -19,6 +26,7 @@
     {{else}}
       Welcome!<br><span class="instructions">Press click button or press space to play!</span>
       <button class="game-start" autofocus="autofocus" {{action createGame}}>Play</button>
+      <span class="instructions small">Press the ⬅️ or ➡️ cursor keys to move the car.</span>
     {{/if}}
   </div>
   <div id="game-component"></div>

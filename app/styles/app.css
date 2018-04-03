@@ -66,8 +66,14 @@ br {
   100% { transform: translateY(100%); }
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .game-component-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -90,7 +96,7 @@ br {
   box-sizing: border-box;
 }
 
-.text-content {
+.text-content, .header {
   font-family: sans-serif;
   color: #7d9cf5;
   font-size: 42px;
@@ -101,8 +107,34 @@ br {
   justify-content: center;
 }
 
+.header {
+  flex-direction: row;
+  font-size: 32px;
+  flex-shrink: 0;
+  padding: 12px;
+}
+
+.brand-text {
+  text-align: left;
+}
+
+.subtitle {
+  font-size: 18px;
+}
+
+.header img {
+  height: 32px;
+  width: 32px;
+  padding: 14px;
+  animation: spin 2.5s linear infinite;
+}
+
 .score, .instructions {
   margin-top: 24px;
+}
+
+.small {
+  font-size: 32px;
 }
 
 .game-start {
