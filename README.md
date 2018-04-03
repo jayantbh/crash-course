@@ -1,7 +1,15 @@
 # crash-course
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+An experimental Phaser.js game.
+
+This is an endless track game where you have to steer your car away from oncoming bricks that get faster the higher you score.  
+You have 3 lives, on losing each life, you lose 30% of your score at that moment.  
+
+Here in this screenshot, you can see one of the bricks bursting into flames as the car crashes into it.
+
+_Such dramatic, much flames, very wow._
+
+![screenshot](https://i.snag.gy/xgc3hJ.jpg)
 
 ## Prerequisites
 
