@@ -9,7 +9,7 @@ module.exports = function(defaults) {
     sassOptions: {
       sourceMap: isProduction,
       includePaths: ['app/styles']
-    },
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
