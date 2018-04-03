@@ -1,5 +1,8 @@
 import Service from '@ember/service';
 
+const EXTREME_MODE_LIMIT = 500;
+const TURBO_MODE_LIMIT = 250;
+
 export default Service.extend({
   config: null,
   gameInstance: null,
@@ -120,6 +123,13 @@ export default Service.extend({
     if (service.gameOver) return;
     let cursors = this.input.keyboard.createCursorKeys();
     let turnAngle = 15, turnDuration = 150, carSpeed = 200;
+    let extremeMode = service.get('score') >= EXTREME_MODE_LIMIT;
+
+    // Make the car roughly 50% faster in extreme mode
+    if (extremeMode) {
+      turnDuration = 100;
+      carSpeed = 300;
+    }
 
     if (cursors.left.isDown) {
       service.car.setVelocityX(0 - carSpeed);
@@ -146,8 +156,26 @@ export default Service.extend({
   },
   addBrick(service, {duration, brickColumns, distanceToCover, bricks, brickSize}) {
     if (service.gameOver) return;
+
+    // Increase speed by 30% when you cross a score of 500
+    let turboMode = service.get('score') >= TURBO_MODE_LIMIT;
+    // Increase speed by 60% when you cross a score of 500
+    let extremeMode = service.get('score') >= EXTREME_MODE_LIMIT;
+    let angle = 0;
+
+    if (extremeMode) {
+      duration *= 0.4;
+      brickSize *= 1.25;
+      angle = Phaser.Math.Between(-360, 360);
+    } else if (turboMode) {
+      duration *= 0.7;
+      angle = Phaser.Math.Between(-720, 720);
+    }
+
     let index = Phaser.Math.Between(0, 3);
     let brick = bricks.create(brickColumns[index], 0 - brickSize, 'brick').setDisplaySize(brickSize, brickSize);
+
+
 
     service.incrementProperty('score', 10);
     service.scoreText.setText('Score: ' + service.score);
@@ -155,7 +183,7 @@ export default Service.extend({
     this.tweens.add({
       targets: brick,
       y: distanceToCover,
-      duration
+      duration, angle
     });
 
     setTimeout(() => {
