@@ -10,7 +10,7 @@ Here in this screenshot, you can see one of the bricks bursting into flames as t
 _Such dramatic, much flames, very wow._
 
 ![screenshot](https://i.snag.gy/xgc3hJ.jpg)
-
+<img src="https://i.snag.gy/yUgCVh.jpg" width="300">
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
