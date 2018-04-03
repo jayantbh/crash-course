@@ -145,6 +145,11 @@ br {
   font-size: 36px;
   padding: 12px 24px;
   margin-top: 36px;
+  transition: background-color 0.2s;
+}
+
+.game-start:hover {
+  background-color: #5982f3;
 }
 
 #game-component {
