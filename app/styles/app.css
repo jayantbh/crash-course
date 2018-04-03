@@ -157,8 +157,6 @@ br {
 }
 
 #game-component {
-  height: inherit;
-  width: inherit;
   position: absolute;
 }
 

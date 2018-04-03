@@ -17,15 +17,20 @@ export default Service.extend({
   livesText: null,
   gameOver: false,
 
+  isTouchActive: false,
+
   init() {
     this._super(...arguments);
 
     let service = this;
+    let offsettedWidth = window.innerWidth - 20; // subtracting values to offsett for margins and other components
+    let offsettedHeight = window.innerHeight - 120;
+    let width = 400 < offsettedWidth ? 400 : offsettedWidth;
+    let height = 700 < offsettedHeight ? 700 : offsettedHeight;
 
     this.set('config', {
       type: Phaser.AUTO,
-      width: 400,
-      height: 700,
+      width, height,
       physics: {
         default: 'arcade'
       },
@@ -125,13 +130,22 @@ export default Service.extend({
     let turnAngle = 15, turnDuration = 150, carSpeed = 200;
     let extremeMode = service.get('score') >= EXTREME_MODE_LIMIT;
 
+    let { x: carX } = service.car;
+    let { x: touchX, wasTouch, justDown, justUp } = this.input.manager.activePointer;
+
+    if (wasTouch && justDown) { service.isTouchActive = true; }
+    if (wasTouch && justUp) { service.isTouchActive = false; }
+
+    let rightSideTouched = touchX >= carX && service.isTouchActive;
+    let leftSideTouched = touchX < carX && service.isTouchActive;
+
     // Make the car roughly 50% faster in extreme mode
     if (extremeMode) {
       turnDuration = 100;
       carSpeed = 300;
     }
 
-    if (cursors.left.isDown) {
+    if (cursors.left.isDown || leftSideTouched) {
       service.car.setVelocityX(0 - carSpeed);
       if (this.tweens.getTweensOf(service.car).length) return;
       this.tweens.add({
@@ -140,7 +154,7 @@ export default Service.extend({
         angle: 0 - turnAngle
       });
     }
-    else if (cursors.right.isDown) {
+    else if (cursors.right.isDown || rightSideTouched) {
       service.car.setVelocityX(carSpeed);
       if (this.tweens.getTweensOf(service.car).length) return;
       this.tweens.add({
@@ -224,7 +238,7 @@ export default Service.extend({
     service.set('gameOver', true);
     this.tweens.killAll();
     this.physics.pause();
-    this.add.text(service.config.width/2 + 30, 12, 'GAME.\nOVER.', { fontSize: '56px', fill: '#FFF' });
+    this.add.text(service.config.width/2 + 30, 12, 'GAME.\nOVER.', { fontSize: '48px', fill: '#FFF' });
     // setTimeout(() => service.gameInstance.destroy(), 1000);
   }
 });
