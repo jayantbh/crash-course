@@ -21,7 +21,7 @@
       {{else if (gt-eq game.score 1000)}}
         Are you sure you have nothing better to do?
       {{/if}}
-      <br><span class="score">Your score was {{game.score}}!</span>
+      <br><span class="score-text">Your score was <span class="score"><br>{{game.score}}!</span></span>
       <button class="game-start" autofocus="autofocus" {{action createGame}}>Play again</button>
     {{else}}
       Welcome!<br><span class="instructions">Press click button or press space to play!</span>

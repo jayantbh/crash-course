@@ -129,8 +129,12 @@ br {
   animation: spin 2.5s linear infinite;
 }
 
-.score, .instructions {
+.score-text, .instructions {
   margin-top: 24px;
+}
+
+.score {
+  font-size: 100px;
 }
 
 .small {
