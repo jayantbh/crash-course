@@ -2632,14 +2632,14 @@ ember-truth-helpers@^2.0.0:
   dependencies:
     ember-cli-babel "^6.8.2"
 
-ember-web-app@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/ember-web-app/-/ember-web-app-2.3.0.tgz#201e9c01aae12945582602a4cb91329605280f48"
+ember-web-app@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/ember-web-app/-/ember-web-app-2.3.1.tgz#68f1faf14926ad85d85649348838725d55a50d8e"
   dependencies:
     broccoli-asset-rev "^2.5.0"
     broccoli-caching-writer "^3.0.3"
     broccoli-merge-trees "^2.0.0"
-    ember-cli-babel "^6.0.0"
+    ember-cli-babel "^6.6.0"
     object-assign "^4.1.1"
     web-app-manifest-validator "^1.0.0"
     xmlbuilder "^9.0.4"
